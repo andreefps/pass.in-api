@@ -2,10 +2,10 @@ package andreefps.com.pass.in.services;
 
 import andreefps.com.pass.in.domain.attendee.Attendee;
 import andreefps.com.pass.in.domain.event.Event;
+import andreefps.com.pass.in.domain.event.exceptions.EventNotFoundException;
 import andreefps.com.pass.in.dto.event.EventIdDTO;
 import andreefps.com.pass.in.dto.event.EventRequestDTO;
 import andreefps.com.pass.in.dto.event.EventResponseDTO;
-import andreefps.com.pass.in.repositories.AttendeeRepository;
 import andreefps.com.pass.in.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EventService {
     private final EventRepository eventRepository;
-    private final AttendeeRepository attendeeRepository;
+    private final AttendeeService attendeeService;
 
     public EventResponseDTO getEventDetail(String eventId){
-        Event event = this.eventRepository.findById(eventId).orElseThrow(() -> new RuntimeException(("Event not found: " + eventId)));
-        List<Attendee> attendeeList = this.attendeeRepository.findByEventId(eventId);
+        Event event = this.eventRepository.findById(eventId).orElseThrow(() -> new EventNotFoundException("Event not found: " + eventId));
+        List<Attendee> attendeeList = this.attendeeService.getAllAttendeesFromEvent(eventId);
         return new EventResponseDTO(event, attendeeList.size());
     }
 

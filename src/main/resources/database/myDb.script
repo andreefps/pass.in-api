@@ -29,7 +29,7 @@ SET FILES NIO TRUE
 SET FILES NIO SIZE 256
 SET FILES LOG TRUE
 SET FILES LOG SIZE 50
-SET FILES CHECK 1356
+SET FILES CHECK 2164
 SET DATABASE COLLATION "SQL_TEXT" PAD SPACE
 CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
 ALTER USER SA SET LOCAL TRUE
@@ -58,4 +58,7 @@ INSERT INTO "flyway_schema_history" VALUES(1,'1','create-table-events','SQL','V1
 INSERT INTO "flyway_schema_history" VALUES(2,'2','create-table-attendees','SQL','V2__create-table-attendees.sql',1330948461,'SA','2024-11-04 19:22:18.931497',0,'1')
 INSERT INTO "flyway_schema_history" VALUES(3,'3','create-table-checkins','SQL','V3__create-table-checkins.sql',-1952475006,'SA','2024-11-04 19:22:18.935898',0,'1')
 INSERT INTO "flyway_schema_history" VALUES(4,'4','create-indexes','SQL','V4__create-indexes.sql',553901455,'SA','2024-11-04 19:22:18.939769',0,'1')
+INSERT INTO EVENTS VALUES('2066aafe-f236-4e3d-9aa3-026bba1a487d','HEllo','helooo','hello',500)
+INSERT INTO EVENTS VALUES('a68a9d5d-afb5-4e0c-841d-5908dff88237','Novo Evento','helooo','novo-evento',500)
 INSERT INTO EVENTS VALUES('d391d401-0688-4f1f-a201-abf23aa04eab','NLW','Hi Mom!','',500)
+INSERT INTO ATTENDEES VALUES('d391d401-0688-4f1f-a201-abf23aa04eab', 'John Doe', 'andreefps@gmail.com', 'd391d401-0688-4f1f-a201-abf23aa04eab', CURRENT_TIMESTAMP)
